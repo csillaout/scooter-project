@@ -1,0 +1,31 @@
+%% Mermaid use case diagram for the Scooter app
+
+usecaseDiagram
+    actor User
+    actor Admin as "Scooter Company"
+    
+    rectangle ScooterApp {
+        usecase RegisterUser as "Register User"
+        usecase LoginUser as "Log In"
+        usecase LogoutUser as "Log Out"
+        usecase RentScooter as "Rent Scooter"
+        usecase DockScooter as "Dock Scooter"
+        usecase CreateScooter as "Deploy New Scooter"
+        usecase RepairScooter as "Request Scooter Repair"
+        usecase RechargeScooter as "Recharge Scooter"
+        usecase PrintData as "Display Scooter & User Info"
+    }
+
+    %% Relationships
+    User -- RegisterUser
+    User -- LoginUser
+    User -- LogoutUser
+    User -- RentScooter
+    User -- DockScooter
+
+    Admin -- CreateScooter
+    Admin -- RepairScooter
+    Admin -- RechargeScooter
+    Admin -- PrintData
+
+    RentScooter ..> DockScooter : "<<include>>"
