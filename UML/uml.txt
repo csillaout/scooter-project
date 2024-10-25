@@ -1,0 +1,38 @@
+classDiagram
+    class Scooter {
+        +String station
+        +User user
+        +Int serial
+        +Static Int nextSerial
+        +Int Charge
+        +Boolean isBroken
+        rent(user: User)
+        dock(station: String)
+        recharge()
+        requestRepai()
+    }
+
+    class User {
+        +String username
+        +String password
+        +Int age
+        +Boolean loggedIn
+        login(password: string)
+        logout()
+    }
+
+    class ScooterApp {
+        +String scooter
+        +String registeredUser
+        registerUser(username: String, password: String, age: Int)
+        loginUser(username: String, password: String) User
+        logoutUser(username: String)
+        createScooter(station: String)
+        dockScooter(scooter: Scooter, station: String)
+        rentScooter(scooter: Scooter, user: User)
+        print()
+    }
+
+    ScooterApp "1" o-- "many" Scooter : manages
+    ScooterApp "1" o-- "many" User : registers
+    Scooter "1" *-- "1" User : checked out by
